@@ -497,13 +497,17 @@ namespace QuanLiBanHang.GUI
         #region Khách hàng
         private void LoadfrmKhachHang()
         {
+            cbxTimKH.SelectedIndex = 0;
             BindDgvKhachHang(khachHangBUS.GetKhachHangs());
         }
 
         private void BindDgvKhachHang(List<KhachHang> khachHangs)
         {
             dgvKhachHang.DataSource = khachHangs;
-            dgvKhachHang.Columns["HoaDons"].Visible = false;
+            if (khachHangs != null)
+            {
+                dgvKhachHang.Columns["HoaDons"].Visible = false;
+            }
         }
 
         private void btnXoaKH_Click(object sender, EventArgs e)
@@ -579,7 +583,7 @@ namespace QuanLiBanHang.GUI
                 result = khachHangBUS.SearchKhachHangBySdt(searchStr);
 
             }
-            else if (cbxTimkiem.SelectedIndex == 1)
+            else if (cbxTimKH.SelectedIndex == 1)
             {
                 result = khachHangBUS.SearchKhachHangByTenKH(searchStr);
             }

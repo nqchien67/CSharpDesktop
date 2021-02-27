@@ -459,6 +459,7 @@
             // 
             this.txtSdt.Location = new System.Drawing.Point(198, 86);
             this.txtSdt.Name = "txtSdt";
+            this.txtSdt.ReadOnly = true;
             this.txtSdt.Size = new System.Drawing.Size(170, 22);
             this.txtSdt.TabIndex = 6;
             // 
@@ -748,6 +749,7 @@
             this.txtThue.Location = new System.Drawing.Point(168, 135);
             this.txtThue.Margin = new System.Windows.Forms.Padding(4);
             this.txtThue.Name = "txtThue";
+            this.txtThue.ReadOnly = true;
             this.txtThue.Size = new System.Drawing.Size(132, 22);
             this.txtThue.TabIndex = 26;
             // 
@@ -756,6 +758,7 @@
             this.txtLoiNhuan.Location = new System.Drawing.Point(168, 103);
             this.txtLoiNhuan.Margin = new System.Windows.Forms.Padding(4);
             this.txtLoiNhuan.Name = "txtLoiNhuan";
+            this.txtLoiNhuan.ReadOnly = true;
             this.txtLoiNhuan.Size = new System.Drawing.Size(132, 22);
             this.txtLoiNhuan.TabIndex = 26;
             // 
@@ -764,6 +767,7 @@
             this.txtLoiNhuan2.Location = new System.Drawing.Point(471, 39);
             this.txtLoiNhuan2.Margin = new System.Windows.Forms.Padding(4);
             this.txtLoiNhuan2.Name = "txtLoiNhuan2";
+            this.txtLoiNhuan2.ReadOnly = true;
             this.txtLoiNhuan2.Size = new System.Drawing.Size(132, 22);
             this.txtLoiNhuan2.TabIndex = 25;
             // 
@@ -782,6 +786,7 @@
             this.txtTongThu.Location = new System.Drawing.Point(168, 39);
             this.txtTongThu.Margin = new System.Windows.Forms.Padding(4);
             this.txtTongThu.Name = "txtTongThu";
+            this.txtTongThu.ReadOnly = true;
             this.txtTongThu.Size = new System.Drawing.Size(132, 22);
             this.txtTongThu.TabIndex = 25;
             // 
@@ -810,6 +815,7 @@
             this.txtTongChi.Location = new System.Drawing.Point(168, 70);
             this.txtTongChi.Margin = new System.Windows.Forms.Padding(4);
             this.txtTongChi.Name = "txtTongChi";
+            this.txtTongChi.ReadOnly = true;
             this.txtTongChi.Size = new System.Drawing.Size(132, 22);
             this.txtTongChi.TabIndex = 25;
             // 
@@ -2491,7 +2497,6 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmQuanLy";
             this.Text = "Quản lý bán thiết bị điện tử";
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.frmQuanLy_FormClosed);
             this.Load += new System.EventHandler(this.QuanLy_Load);
             this.menuStrip2.ResumeLayout(false);
             this.menuStrip2.PerformLayout();

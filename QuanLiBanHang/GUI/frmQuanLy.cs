@@ -19,7 +19,6 @@ namespace QuanLiBanHang.GUI
 
         public string maNV;
         private bool nhapMoi = true;
-
         public frmQuanLy()
         {
             InitializeComponent();
@@ -35,6 +34,7 @@ namespace QuanLiBanHang.GUI
             LoadNhanVien();
             LoadfrmSanPham();
             LoadfrmKhachHang();
+            LoadfrmNCC();
         }
 
         private void LoadNhanVien()
@@ -553,8 +553,6 @@ namespace QuanLiBanHang.GUI
             {
                 txtSdt.Text = dgvKhachHang.CurrentRow.Cells["clmsdt"].Value.ToString();
                 txtTenKH.Text = dgvKhachHang.CurrentRow.Cells["clmTenKH"].Value.ToString();
-                txtSdtNCC.Enabled = false;
-                nhapMoi = false;
             }
             catch (Exception ex)
             {
@@ -598,6 +596,8 @@ namespace QuanLiBanHang.GUI
             DateTime dateTo = dtpToPN.Value;
             dgvPhieuNhap.DataSource = phieuNhapBUS.TimPhieuNhap(dateFrom, dateTo);
             dgvPhieuNhap.Columns["ChiTietPNs"].Visible = false;
+            dgvPhieuNhap.Columns["ma_nv"].Visible = false;
+            dgvPhieuNhap.Columns["ma_ncc"].Visible = false;
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -695,6 +695,10 @@ namespace QuanLiBanHang.GUI
         }
 
         #endregion
+        private void LoadfrmNCC()
+        {
+            dgvNCC.DataSource = nhaCungCapBUS.GetNhaCungCaps();
+        }
 
         private void btnNhapMoiNCC_Click(object sender, EventArgs e)
         {
@@ -737,26 +741,25 @@ namespace QuanLiBanHang.GUI
         {
             if (AreAllNCCTbxFull())
             {
-                string gioiTinh = GetGioiTinhFromRdb();
                 NhaCungCap nhaCungCap = new NhaCungCap()
                 {
                     ten_ncc = txtTenNCC.Text,
                     ma_ncc = txtMaNCC.Text,
                     sdt_ncc = txtSdtNCC.Text
                 };
+                if (nhapMoi)
                 {
-                    if (nhapMoi)
-                    {
-                        nhaCungCapBUS.ThemNhaCungCap(nhaCungCap);
-                        MessageBox.Show("Thêm dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        nhaCungCapBUS.ThemNhaCungCap(nhaCungCap);
-                        MessageBox.Show("Update dữ liệu thành công!", "Thông báo", MessageBoxButtons.OKCancel);
-                    }
-                    LoadfrmKhachHang();
+
+                    nhaCungCapBUS.ThemNhaCungCap(nhaCungCap);
+                    MessageBox.Show("Thêm dữ liệu thành công!", "Thông báo", MessageBoxButtons.OK);
                 }
+                else
+                {
+                    nhaCungCapBUS.SuaNhaCungCap(nhaCungCap);
+                    MessageBox.Show("Update dữ liệu thành công!", "Thông báo", MessageBoxButtons.OKCancel);
+                }
+                LoadfrmNCC();
+
             }
 
             bool AreAllNCCTbxFull()
@@ -791,6 +794,8 @@ namespace QuanLiBanHang.GUI
                 txtMaNCC.Text = dgvNCC.CurrentRow.Cells["Column12"].Value.ToString();
                 txtTenNCC.Text = dgvNCC.CurrentRow.Cells["Column13"].Value.ToString();
                 txtSdtNCC.Text = dgvNCC.CurrentRow.Cells["Column15"].Value.ToString();
+                nhapMoi = false;
+                txtMaNCC.Enabled = false;
             }
             catch (Exception ex)
             {
@@ -826,16 +831,6 @@ namespace QuanLiBanHang.GUI
             {
                 Application.Exit();
             }
-        }
-
-        private void frmQuanLy_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            Thoat();
-        }
-
-        private void btnXoaPN(object sender, EventArgs e)
-        {
-
         }
     }
 }

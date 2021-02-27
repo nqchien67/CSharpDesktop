@@ -38,9 +38,9 @@ namespace QuanLiBanHang.BUS
             return nhaCungCapDAL.GetNhaCungCaps();
         }
 
-        public void SuaNhaCungCap(string maNCC)
+        public void SuaNhaCungCap(NhaCungCap nhaCungCap)
         {
-            nhaCungCapDAL.Update(GetNhaCungCaps().Find(p => p.ma_ncc == maNCC));
+            nhaCungCapDAL.Update(nhaCungCap);
         }
     }
 }

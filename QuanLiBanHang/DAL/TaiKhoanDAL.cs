@@ -32,11 +32,11 @@ namespace QuanLiBanHang.DAL
             }
         }
 
-        public void Update(TaiKhoan taiKhoan)
-        {
-            taiKhoan.trang_thai = taiKhoan.trang_thai;
-            db.SaveChanges();
-        }
+        //public void Update(TaiKhoan taiKhoan)
+        //{
+        //    taiKhoan.trang_thai = taiKhoan.trang_thai;
+        //    db.SaveChanges();
+        //}
 
         public TaiKhoan GetTaiKhoan(string maNV)
         {

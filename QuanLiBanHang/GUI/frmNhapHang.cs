@@ -45,7 +45,7 @@ namespace QuanLiBanHang.GUI
             frnMessage message = new frnMessage("", "Đăng xuất", "Thoát");
             message.StartPosition = FormStartPosition.CenterParent;
             DialogResult result = message.ShowDialog();
-            taiKhoanBUS.DangXuat(maNV);
+            //taiKhoanBUS.DangXuat(maNV);
             if (result == DialogResult.Yes)
             {
                 this.Dispose();

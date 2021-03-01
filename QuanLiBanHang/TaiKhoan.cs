@@ -17,7 +17,6 @@ namespace QuanLiBanHang
         public int id { get; set; }
         public string ma_nv { get; set; }
         public string password { get; set; }
-        public bool trang_thai { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }

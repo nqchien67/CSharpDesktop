@@ -301,6 +301,7 @@
             // 
             // dtpNgayLap
             // 
+            this.dtpNgayLap.Enabled = false;
             this.dtpNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpNgayLap.Location = new System.Drawing.Point(159, 76);
             this.dtpNgayLap.Margin = new System.Windows.Forms.Padding(4);

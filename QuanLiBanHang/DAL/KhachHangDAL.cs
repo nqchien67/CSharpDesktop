@@ -39,8 +39,15 @@ namespace QuanLiBanHang.DAL
 
         public void Delete(KhachHang khachHang)
         {
-            db.KhachHangs.Remove(khachHang);
-            db.SaveChanges();
+            try
+            {
+                db.KhachHangs.Remove(khachHang);
+                db.SaveChanges();
+            }
+            catch (Exception)
+            {
+                throw new Exception("Không thể xóa do tồn tại hóa đơn với khách hàng này.");
+            }
         }
     }
 }

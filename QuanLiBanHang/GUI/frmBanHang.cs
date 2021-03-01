@@ -18,7 +18,6 @@ namespace QuanLiBanHang.GUI
         HoaDonBUS hoaDonBUS = new HoaDonBUS(context);
         KhachHangBUS khachHangBUS = new KhachHangBUS();
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
-        TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
         NhanVien nhanVien;
         HoaDon hoaDon = new HoaDon()
         {
@@ -117,10 +116,6 @@ namespace QuanLiBanHang.GUI
         private void BindDgvChiTietHD()
         { 
             dgvChiTietHoaDon.DataSource = hoaDon.ChiTietHDs.ToList();
-            //foreach(DataGridViewRow row in dgvChiTietHoaDon.Rows)
-            //{
-            //    row.Cells["clmTenSanPham"].Value = sanPhamBUS.GetSanPhamsByMaSP(row.Cells["clmMaSanPham"].Value.ToString()).ten_sp;
-            //}
             dgvChiTietHoaDon.Columns["HoaDon"].Visible = false;
             dgvChiTietHoaDon.Columns["id"].Visible = false;
             dgvChiTietHoaDon.Refresh();
@@ -271,7 +266,7 @@ namespace QuanLiBanHang.GUI
                 KhachHang khachHang = new KhachHang()
                 {
                     sdt_kh = txtSdtKH_HD.Text,
-                    ten_kh = txtTenKhachHang.Text
+                    ten_kh = txtTenKhachHang_HD.Text
                 };
                 khachHangBUS.ThemKhachHang(khachHang);
                 hoaDonBUS.ThemHoaDon(hoaDon);
@@ -284,11 +279,6 @@ namespace QuanLiBanHang.GUI
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
-        {
-            Thoat();
-        }
-
-        private void Thoat()
         {
             frnMessage message = new frnMessage("", "Đăng xuất", "Thoát");
             message.StartPosition = FormStartPosition.CenterParent;
@@ -345,7 +335,7 @@ namespace QuanLiBanHang.GUI
 
         private void frmBanHang_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Thoat();
+            Application.Exit();
         }
     }
 }

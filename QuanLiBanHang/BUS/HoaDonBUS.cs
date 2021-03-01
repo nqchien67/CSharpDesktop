@@ -31,7 +31,7 @@ namespace QuanLiBanHang.BUS
             return DAL.GetHoaDons();
         }
 
-        public List<ChiTietHD> GetChiTietPNs(int maHD)
+        public List<ChiTietHD> GetChiTietHDs(int maHD)
         {
             return GetHoaDons().Find(p => p.ma_hd == maHD).ChiTietHDs.ToList();
         }

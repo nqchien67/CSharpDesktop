@@ -32,10 +32,10 @@ namespace QuanLiBanHang
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ChucVu> ChucVus { get; set; }
         public virtual DbSet<HoaDon> HoaDons { get; set; }
-        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ChiTietHD> ChiTietHDs { get; set; }
         public virtual DbSet<ChiTietPN> ChiTietPNs { get; set; }
         public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
         public virtual DbSet<PhieuNhap> PhieuNhaps { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
     }
 }

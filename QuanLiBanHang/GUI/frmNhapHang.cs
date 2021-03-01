@@ -15,7 +15,6 @@ namespace QuanLiBanHang.GUI
     {
         static QLBHEntities context = new QLBHEntities();
         SanPhamBUS sanPhamBUS = new SanPhamBUS(context);
-        TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
         NhaCungCapBUS nhaCungCapBUS = new NhaCungCapBUS();
         PhieuNhapBUS phieuNhapBUS = new PhieuNhapBUS(context);
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
@@ -39,13 +38,12 @@ namespace QuanLiBanHang.GUI
             dgvSanPham_PN.Columns["ChiTietPNs"].Visible = false;
             dgvSanPham_PN.Columns["ma_loai"].Visible = false;
         }
-        #endregion
+
         private void Thoat()
         {
             frnMessage message = new frnMessage("", "Đăng xuất", "Thoát");
             message.StartPosition = FormStartPosition.CenterParent;
             DialogResult result = message.ShowDialog();
-            //taiKhoanBUS.DangXuat(maNV);
             if (result == DialogResult.Yes)
             {
                 this.Dispose();
@@ -58,11 +56,11 @@ namespace QuanLiBanHang.GUI
             }
         }
 
-
         private void LoadfrmPhieuNhap()
         {
             txtNhanVien.Text = nhanVien.ten_nv;
             dtpNgayLap.Value = DateTime.Now;
+            cbxTimKiem_PN.SelectedIndex = 0;
             BindDgvSanPham(sanPhams);
             BindSanPhamFromDgvToTbx();
         }
@@ -76,50 +74,51 @@ namespace QuanLiBanHang.GUI
                 txtTenSP_PN.Text = dgvSanPham_PN.CurrentRow.Cells["ten_sp"].Value.ToString();
             }
         }
+        #endregion
 
         private void btnThemSP_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            int soLuong = int.Parse(txtSoLuongNhapVao.Text);
-            decimal giaNhap = decimal.Parse(txtGiaNhap.Text);
-            string maSP = txtMaSP_PN.Text;
-            if (checkBox1.Checked)
+            try
             {
-                NhaCungCap nhaCungCap = new NhaCungCap()
+                int soLuong = int.Parse(txtSoLuongNhapVao.Text);
+                decimal giaNhap = decimal.Parse(txtGiaNhap.Text);
+                string maSP = txtMaSP_PN.Text;
+                if (checkBox1.Checked)
                 {
-                    ma_ncc = txtMaNCC.Text,
-                    ten_ncc = txtTenNCC.Text,
-                    sdt_ncc = txtSDTNCC.Text,
-                };
-                nhaCungCapBUS.ThemNhaCungCap(nhaCungCap);
-                phieuNhap.ma_ncc = txtMaNCC.Text;
-            }
-            else
-            {
-                string maNCC = cbxNhaCungCap.SelectedValue.ToString();
-                if (maNCC != "")
-                {
-                    phieuNhap.ma_ncc = maNCC;
+                    NhaCungCap nhaCungCap = new NhaCungCap()
+                    {
+                        ma_ncc = txtMaNCC.Text,
+                        ten_ncc = txtTenNCC.Text,
+                        sdt_ncc = txtSDTNCC.Text,
+                    };
+                    nhaCungCapBUS.ThemNhaCungCap(nhaCungCap);
+                    phieuNhap.ma_ncc = txtMaNCC.Text;
                 }
+                else
+                {
+                    string maNCC = cbxNhaCungCap.SelectedValue.ToString();
+                    if (maNCC != "")
+                    {
+                        phieuNhap.ma_ncc = maNCC;
+                    }
+                }
+                ChiTietPN chiTietPN = new ChiTietPN()
+                {
+                    ma_sp = maSP,
+                    so_luong = soLuong,
+                    gia_nhap = giaNhap,
+                    SanPham = sanPhamBUS.GetSanPhamsByMaSP(maSP)
+                };
+                chiTietPN.tong = soLuong * giaNhap;
+                phieuNhap.tong_tien += chiTietPN.tong;
+                phieuNhap.ChiTietPNs.Add(chiTietPN);
+                txtTongThanhToan.Text = phieuNhap.tong_tien.ToString();
+                BindDgvChiTietPN();
             }
-            ChiTietPN chiTietPN = new ChiTietPN()
+            catch (Exception ex)
             {
-                ma_sp = maSP,
-                so_luong = soLuong,
-                gia_nhap = giaNhap,
-                SanPham = sanPhamBUS.GetSanPhamsByMaSP(maSP)
-            };
-            chiTietPN.tong = soLuong * giaNhap;
-            phieuNhap.tong_tien += chiTietPN.tong;
-            phieuNhap.ChiTietPNs.Add(chiTietPN);
-            txtTongThanhToan.Text = phieuNhap.tong_tien.ToString();
-            BindDgvChiTietPN();
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void BindDgvChiTietPN()

@@ -118,7 +118,6 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ma_nv" Type="varchar" MaxLength="20" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="40" Nullable="false" />
-          <Property Name="trang_thai" Type="bit" Nullable="false" />
         </EntityType>
         <Association Name="FK_ChiTietHD_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -338,11 +337,6 @@
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="HoaDon" EntitySet="HoaDons" />
           </AssociationSet>
-          <EntitySet Name="TaiKhoans" EntityType="QLBHModel.TaiKhoan" />
-          <AssociationSet Name="FK_TaiKhoan_NhanVien1" Association="QLBHModel.FK_TaiKhoan_NhanVien1">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
-          </AssociationSet>
           <EntitySet Name="ChiTietHDs" EntityType="QLBHModel.ChiTietHD" />
           <AssociationSet Name="FK_ChiTietHD_HoaDon" Association="QLBHModel.FK_ChiTietHD_HoaDon">
             <End Role="HoaDon" EntitySet="HoaDons" />
@@ -370,6 +364,11 @@
           <AssociationSet Name="FK_PhieuNhap_NhanVien" Association="QLBHModel.FK_PhieuNhap_NhanVien">
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="PhieuNhap" EntitySet="PhieuNhaps" />
+          </AssociationSet>
+          <EntitySet Name="TaiKhoans" EntityType="QLBHModel.TaiKhoan" />
+          <AssociationSet Name="FK_TaiKhoan_NhanVien1" Association="QLBHModel.FK_TaiKhoan_NhanVien1">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="KhachHang">
@@ -401,8 +400,8 @@
           <Property Name="ma_cv" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ChucVu" Relationship="QLBHModel.FK_NhanVien_ChucVu" FromRole="NhanVien" ToRole="ChucVu" />
           <NavigationProperty Name="HoaDons" Relationship="QLBHModel.FK_HoaDon_NhanVien" FromRole="NhanVien" ToRole="HoaDon" />
-          <NavigationProperty Name="TaiKhoans" Relationship="QLBHModel.FK_TaiKhoan_NhanVien1" FromRole="NhanVien" ToRole="TaiKhoan" />
           <NavigationProperty Name="PhieuNhaps" Relationship="QLBHModel.FK_PhieuNhap_NhanVien" FromRole="NhanVien" ToRole="PhieuNhap" />
+          <NavigationProperty Name="TaiKhoans" Relationship="QLBHModel.FK_TaiKhoan_NhanVien1" FromRole="NhanVien" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -495,28 +494,6 @@
               <PropertyRef Name="ma_nv" />
             </Principal>
             <Dependent Role="HoaDon">
-              <PropertyRef Name="ma_nv" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="TaiKhoan">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ma_nv" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
-          <Property Name="trang_thai" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="NhanVien" Relationship="QLBHModel.FK_TaiKhoan_NhanVien1" FromRole="TaiKhoan" ToRole="NhanVien" />
-        </EntityType>
-        <Association Name="FK_TaiKhoan_NhanVien1">
-          <End Type="QLBHModel.NhanVien" Role="NhanVien" Multiplicity="1" />
-          <End Type="QLBHModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="ma_nv" />
-            </Principal>
-            <Dependent Role="TaiKhoan">
               <PropertyRef Name="ma_nv" />
             </Dependent>
           </ReferentialConstraint>
@@ -641,6 +618,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ma_nv" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="NhanVien" Relationship="QLBHModel.FK_TaiKhoan_NhanVien1" FromRole="TaiKhoan" ToRole="NhanVien" />
+        </EntityType>
+        <Association Name="FK_TaiKhoan_NhanVien1">
+          <End Type="QLBHModel.NhanVien" Role="NhanVien" Multiplicity="1" />
+          <End Type="QLBHModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="ma_nv" />
+            </Principal>
+            <Dependent Role="TaiKhoan">
+              <PropertyRef Name="ma_nv" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -720,16 +718,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TaiKhoans">
-            <EntityTypeMapping TypeName="QLBHModel.TaiKhoan">
-              <MappingFragment StoreEntitySet="TaiKhoan">
-                <ScalarProperty Name="trang_thai" ColumnName="trang_thai" />
-                <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="ma_nv" ColumnName="ma_nv" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHDs">
             <EntityTypeMapping TypeName="QLBHModel.ChiTietHD">
               <MappingFragment StoreEntitySet="ChiTietHD">
@@ -771,6 +759,15 @@
                 <ScalarProperty Name="ma_ncc" ColumnName="ma_ncc" />
                 <ScalarProperty Name="ma_nv" ColumnName="ma_nv" />
                 <ScalarProperty Name="ma_phieu_nhap" ColumnName="ma_phieu_nhap" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaiKhoans">
+            <EntityTypeMapping TypeName="QLBHModel.TaiKhoan">
+              <MappingFragment StoreEntitySet="TaiKhoan">
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="ma_nv" ColumnName="ma_nv" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -9,7 +9,6 @@ namespace QuanLiBanHang.GUI
     {
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
         ChucVuBUS chucVuBUS = new ChucVuBUS();
-        TaiKhoanBUS taiKhoanBUS = new TaiKhoanBUS();
         SanPhamBUS sanPhamBUS = new SanPhamBUS();
         LoaiSanPhamBUS loaiSanPhamBUS = new LoaiSanPhamBUS();
         PhieuNhapBUS phieuNhapBUS = new PhieuNhapBUS();
@@ -612,6 +611,7 @@ namespace QuanLiBanHang.GUI
                 int maPN = Convert.ToInt32(dgvPhieuNhap.CurrentRow.Cells["clmMaPN"].Value);
                 dgvChitietPN.DataSource = phieuNhapBUS.GetChiTietPNs(maPN);
                 dgvChitietPN.Columns["PhieuNhap"].Visible = false;
+                dgvChitietPN.Columns["id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -634,8 +634,9 @@ namespace QuanLiBanHang.GUI
             try
             {
                 int maHD = Convert.ToInt32(dgvHoaDon.CurrentRow.Cells["clmMaHD"].Value);
-                dgvChitietPN.DataSource = phieuNhapBUS.GetChiTietPNs(maHD);
-                dgvChitietPN.Columns["HoaDon"].Visible = false;
+                dgvChiTietHD.DataSource = hoaDonBUS.GetChiTietHDs(maHD);
+                dgvChiTietHD.Columns["HoaDon"].Visible = false;
+                dgvChiTietHD.Columns["id"].Visible = false;
             }
             catch (Exception ex)
             {
@@ -643,18 +644,6 @@ namespace QuanLiBanHang.GUI
             }
         }
 
-        //private void btnXoaHD_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        int maHD = Convert.ToInt32(dgvPhieuNhap.CurrentRow.Cells["clmMaHD"].Value);
-        //        hoaDonBUS.XoaHoaDon(maHD);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
         #endregion
         #region Thống kê
         private void btnXem_Click(object sender, EventArgs e)
@@ -812,11 +801,6 @@ namespace QuanLiBanHang.GUI
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            Thoat();
-        }
-
-        private void Thoat()
-        {
             frnMessage message = new frnMessage("", "Đăng xuất", "Thoát");
             message.StartPosition = FormStartPosition.CenterParent;
             DialogResult result = message.ShowDialog();
@@ -830,6 +814,11 @@ namespace QuanLiBanHang.GUI
             {
                 Application.Exit();
             }
+        }
+
+        private void frmQuanLy_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

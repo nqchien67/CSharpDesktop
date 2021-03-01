@@ -31,7 +31,7 @@ namespace QuanLiBanHang.BUS
             }
             else
             {
-                return;
+                new Exception("đã tồn tại.");
             }
         }
 

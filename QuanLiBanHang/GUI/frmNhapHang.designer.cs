@@ -275,6 +275,7 @@
             // 
             this.txtNhanVien.Location = new System.Drawing.Point(159, 127);
             this.txtNhanVien.Name = "txtNhanVien";
+            this.txtNhanVien.ReadOnly = true;
             this.txtNhanVien.Size = new System.Drawing.Size(132, 22);
             this.txtNhanVien.TabIndex = 15;
             // 

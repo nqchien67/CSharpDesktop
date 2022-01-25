@@ -20,7 +20,7 @@ namespace QuanLiBanHang.GUI
         NhanVienBUS nhanVienBUS = new NhanVienBUS();
         NhanVien nhanVien;
         HoaDon hoaDon = new HoaDon()
-        {
+        { 
             tong_gia_tri = 0,
         };
         List<SanPham> sanPhams;

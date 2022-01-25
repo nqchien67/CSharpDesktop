@@ -9,11 +9,13 @@ namespace QuanLiBanHang.BUS
 {
     class NhanVienBUS
     {
-        NhanVienDAL DAL = null;
+        NhanVienDAL nhanVienDAL = null;
+        TaiKhoanDAL taiKhoanDAL = null;
 
         public NhanVienBUS()
         {
-            DAL = new NhanVienDAL();
+            nhanVienDAL = new NhanVienDAL();
+            taiKhoanDAL = new TaiKhoanDAL();
         }
 
         //Nếu source chứa toCheck return true
@@ -28,7 +30,7 @@ namespace QuanLiBanHang.BUS
             NhanVien check = GetNhanViens().Find(p => p.ma_nv == nhanVien.ma_nv);
             if (check == null)
             {
-                DAL.Insert(nhanVien);
+                nhanVienDAL.Insert(nhanVien);
             }
             else
             {
@@ -38,7 +40,7 @@ namespace QuanLiBanHang.BUS
 
         public List<NhanVien> GetNhanViens()
         {
-            return DAL.GetNhanViens();
+            return nhanVienDAL.GetNhanViens();
         }
 
         public NhanVien GetNhanVienByMaNV(string maNV)
@@ -60,7 +62,7 @@ namespace QuanLiBanHang.BUS
         {
             if (nhanVien != null)
             {
-                DAL.Update(nhanVien);
+                nhanVienDAL.Update(nhanVien);
             }
             else
             {
@@ -70,6 +72,11 @@ namespace QuanLiBanHang.BUS
 
         public void XoaNhanVien(string maNV)
         {
+            TaiKhoan taiKhoan = taiKhoanDAL.GetTaiKhoan(maNV);
+            if(taiKhoan != null)
+            {
+                taiKhoanDAL.Delete(taiKhoan);
+            }
             NhanVien nhanVien = GetNhanVienByMaNV(maNV);
             if (nhanVien == null)
             {
@@ -77,7 +84,7 @@ namespace QuanLiBanHang.BUS
             }
             else
             {
-                DAL.Delete(nhanVien);
+                nhanVienDAL.Delete(nhanVien);
             }
         }
     }

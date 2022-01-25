@@ -110,6 +110,12 @@
             this.GiaNhap = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tong = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPhieuNhap = new System.Windows.Forms.DataGridView();
+            this.clmMaPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmNgayLPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabQLHD = new System.Windows.Forms.TabPage();
             this.label37 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
@@ -127,6 +133,13 @@
             this.clmGiaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clmThanhTieninHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvHoaDon = new System.Windows.Forms.DataGridView();
+            this.clmMaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sdtHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmlNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmngayLHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.clmTongGiaTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabSanPham = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.lblTimSP = new System.Windows.Forms.Label();
@@ -228,19 +241,6 @@
             this.label24 = new System.Windows.Forms.Label();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.Button();
-            this.clmMaHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sdtHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmlNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmngayLHD = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTongGiaTri = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmMaPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmTenNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNCC = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.clmNgayLPN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabKhachHang.SuspendLayout();
@@ -1106,6 +1106,63 @@
             this.dgvPhieuNhap.TabIndex = 1;
             this.dgvPhieuNhap.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuNhap_CellClick);
             // 
+            // clmMaPN
+            // 
+            this.clmMaPN.DataPropertyName = "ma_phieu_nhap";
+            this.clmMaPN.HeaderText = "Mã phiếu nhập";
+            this.clmMaPN.MinimumWidth = 6;
+            this.clmMaPN.Name = "clmMaPN";
+            this.clmMaPN.ReadOnly = true;
+            this.clmMaPN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmMaPN.Width = 150;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "ma_nv";
+            this.Column3.MinimumWidth = 6;
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            this.Column3.Width = 125;
+            // 
+            // clmTenNV
+            // 
+            this.clmTenNV.DataPropertyName = "NhanVien";
+            this.clmTenNV.HeaderText = "Họ và tên nhân viên lập";
+            this.clmTenNV.MinimumWidth = 6;
+            this.clmTenNV.Name = "clmTenNV";
+            this.clmTenNV.ReadOnly = true;
+            this.clmTenNV.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmTenNV.Width = 150;
+            // 
+            // clmNCC
+            // 
+            this.clmNCC.DataPropertyName = "NhaCungCap";
+            this.clmNCC.HeaderText = "Tên nhà cung cấp";
+            this.clmNCC.MinimumWidth = 6;
+            this.clmNCC.Name = "clmNCC";
+            this.clmNCC.ReadOnly = true;
+            this.clmNCC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmNCC.Width = 150;
+            // 
+            // clmNgayLPN
+            // 
+            this.clmNgayLPN.DataPropertyName = "ngay_lap_pn";
+            this.clmNgayLPN.HeaderText = "Ngày lập";
+            this.clmNgayLPN.MinimumWidth = 6;
+            this.clmNgayLPN.Name = "clmNgayLPN";
+            this.clmNgayLPN.ReadOnly = true;
+            this.clmNgayLPN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmNgayLPN.Width = 130;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "tong_tien";
+            this.Column11.HeaderText = "Tổng chi";
+            this.Column11.MinimumWidth = 6;
+            this.Column11.Name = "Column11";
+            this.Column11.ReadOnly = true;
+            this.Column11.Width = 150;
+            // 
             // tabQLHD
             // 
             this.tabQLHD.Controls.Add(this.label37);
@@ -1292,6 +1349,74 @@
             this.dgvHoaDon.Size = new System.Drawing.Size(1027, 283);
             this.dgvHoaDon.TabIndex = 6;
             this.dgvHoaDon.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDon_CellClick);
+            // 
+            // clmMaHD
+            // 
+            this.clmMaHD.DataPropertyName = "ma_hd";
+            this.clmMaHD.HeaderText = "Mã hóa đơn";
+            this.clmMaHD.MinimumWidth = 6;
+            this.clmMaHD.Name = "clmMaHD";
+            this.clmMaHD.ReadOnly = true;
+            this.clmMaHD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmMaHD.Width = 120;
+            // 
+            // sdtHD
+            // 
+            this.sdtHD.DataPropertyName = "sdt_kh";
+            this.sdtHD.HeaderText = "Số điện thoại khách hàng";
+            this.sdtHD.MinimumWidth = 6;
+            this.sdtHD.Name = "sdtHD";
+            this.sdtHD.ReadOnly = true;
+            this.sdtHD.Width = 125;
+            // 
+            // clmKH
+            // 
+            this.clmKH.DataPropertyName = "KhachHang";
+            this.clmKH.HeaderText = "Tên khách hàng";
+            this.clmKH.MinimumWidth = 6;
+            this.clmKH.Name = "clmKH";
+            this.clmKH.ReadOnly = true;
+            this.clmKH.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmKH.Width = 120;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "ma_nv";
+            this.Column2.HeaderText = "Mã nhân viên";
+            this.Column2.MinimumWidth = 6;
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            this.Column2.Width = 125;
+            // 
+            // cmlNV
+            // 
+            this.cmlNV.DataPropertyName = "NhanVien";
+            this.cmlNV.HeaderText = "Tên nhân viên lập";
+            this.cmlNV.MinimumWidth = 6;
+            this.cmlNV.Name = "cmlNV";
+            this.cmlNV.ReadOnly = true;
+            this.cmlNV.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cmlNV.Width = 120;
+            // 
+            // clmngayLHD
+            // 
+            this.clmngayLHD.DataPropertyName = "ngay_lap";
+            this.clmngayLHD.HeaderText = "Ngày lập hóa đơn";
+            this.clmngayLHD.MinimumWidth = 6;
+            this.clmngayLHD.Name = "clmngayLHD";
+            this.clmngayLHD.ReadOnly = true;
+            this.clmngayLHD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmngayLHD.Width = 120;
+            // 
+            // clmTongGiaTri
+            // 
+            this.clmTongGiaTri.DataPropertyName = "tong_gia_tri";
+            this.clmTongGiaTri.HeaderText = "Tổng";
+            this.clmTongGiaTri.MinimumWidth = 6;
+            this.clmTongGiaTri.Name = "clmTongGiaTri";
+            this.clmTongGiaTri.ReadOnly = true;
+            this.clmTongGiaTri.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.clmTongGiaTri.Width = 120;
             // 
             // tabSanPham
             // 
@@ -2098,6 +2223,7 @@
             this.txtSdtNV.Name = "txtSdtNV";
             this.txtSdtNV.Size = new System.Drawing.Size(155, 22);
             this.txtSdtNV.TabIndex = 1;
+            this.txtSdtNV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSdtNV_KeyPress);
             // 
             // label5
             // 
@@ -2295,6 +2421,7 @@
             this.txtSdtNCC.Name = "txtSdtNCC";
             this.txtSdtNCC.Size = new System.Drawing.Size(132, 22);
             this.txtSdtNCC.TabIndex = 0;
+            this.txtSdtNCC.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSdtNCC_KeyPress);
             // 
             // btnXoaNCC
             // 
@@ -2377,131 +2504,6 @@
             this.btnDangXuat.Text = "Thoát";
             this.btnDangXuat.UseVisualStyleBackColor = true;
             this.btnDangXuat.Click += new System.EventHandler(this.btnThoat_Click);
-            // 
-            // clmMaHD
-            // 
-            this.clmMaHD.DataPropertyName = "ma_hd";
-            this.clmMaHD.HeaderText = "Mã hóa đơn";
-            this.clmMaHD.MinimumWidth = 6;
-            this.clmMaHD.Name = "clmMaHD";
-            this.clmMaHD.ReadOnly = true;
-            this.clmMaHD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmMaHD.Width = 120;
-            // 
-            // sdtHD
-            // 
-            this.sdtHD.DataPropertyName = "sdt_kh";
-            this.sdtHD.HeaderText = "Số điện thoại khách hàng";
-            this.sdtHD.MinimumWidth = 6;
-            this.sdtHD.Name = "sdtHD";
-            this.sdtHD.ReadOnly = true;
-            this.sdtHD.Width = 125;
-            // 
-            // clmKH
-            // 
-            this.clmKH.DataPropertyName = "KhachHang";
-            this.clmKH.HeaderText = "Tên khách hàng";
-            this.clmKH.MinimumWidth = 6;
-            this.clmKH.Name = "clmKH";
-            this.clmKH.ReadOnly = true;
-            this.clmKH.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmKH.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "ma_nv";
-            this.Column2.HeaderText = "Mã nhân viên";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            this.Column2.Width = 125;
-            // 
-            // cmlNV
-            // 
-            this.cmlNV.DataPropertyName = "NhanVien";
-            this.cmlNV.HeaderText = "Tên nhân viên lập";
-            this.cmlNV.MinimumWidth = 6;
-            this.cmlNV.Name = "cmlNV";
-            this.cmlNV.ReadOnly = true;
-            this.cmlNV.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cmlNV.Width = 120;
-            // 
-            // clmngayLHD
-            // 
-            this.clmngayLHD.DataPropertyName = "ngay_lap";
-            this.clmngayLHD.HeaderText = "Ngày lập hóa đơn";
-            this.clmngayLHD.MinimumWidth = 6;
-            this.clmngayLHD.Name = "clmngayLHD";
-            this.clmngayLHD.ReadOnly = true;
-            this.clmngayLHD.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmngayLHD.Width = 120;
-            // 
-            // clmTongGiaTri
-            // 
-            this.clmTongGiaTri.DataPropertyName = "tong_gia_tri";
-            this.clmTongGiaTri.HeaderText = "Tổng";
-            this.clmTongGiaTri.MinimumWidth = 6;
-            this.clmTongGiaTri.Name = "clmTongGiaTri";
-            this.clmTongGiaTri.ReadOnly = true;
-            this.clmTongGiaTri.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmTongGiaTri.Width = 120;
-            // 
-            // clmMaPN
-            // 
-            this.clmMaPN.DataPropertyName = "ma_phieu_nhap";
-            this.clmMaPN.HeaderText = "Mã phiếu nhập";
-            this.clmMaPN.MinimumWidth = 6;
-            this.clmMaPN.Name = "clmMaPN";
-            this.clmMaPN.ReadOnly = true;
-            this.clmMaPN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmMaPN.Width = 150;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "ma_nv";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            this.Column3.Width = 125;
-            // 
-            // clmTenNV
-            // 
-            this.clmTenNV.DataPropertyName = "NhanVien";
-            this.clmTenNV.HeaderText = "Họ và tên nhân viên lập";
-            this.clmTenNV.MinimumWidth = 6;
-            this.clmTenNV.Name = "clmTenNV";
-            this.clmTenNV.ReadOnly = true;
-            this.clmTenNV.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmTenNV.Width = 150;
-            // 
-            // clmNCC
-            // 
-            this.clmNCC.DataPropertyName = "NhaCungCap";
-            this.clmNCC.HeaderText = "Tên nhà cung cấp";
-            this.clmNCC.MinimumWidth = 6;
-            this.clmNCC.Name = "clmNCC";
-            this.clmNCC.ReadOnly = true;
-            this.clmNCC.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmNCC.Width = 150;
-            // 
-            // clmNgayLPN
-            // 
-            this.clmNgayLPN.DataPropertyName = "ngay_lap_pn";
-            this.clmNgayLPN.HeaderText = "Ngày lập";
-            this.clmNgayLPN.MinimumWidth = 6;
-            this.clmNgayLPN.Name = "clmNgayLPN";
-            this.clmNgayLPN.ReadOnly = true;
-            this.clmNgayLPN.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.clmNgayLPN.Width = 130;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "tong_tien";
-            this.Column11.HeaderText = "Tổng chi";
-            this.Column11.MinimumWidth = 6;
-            this.Column11.Name = "Column11";
-            this.Column11.ReadOnly = true;
-            this.Column11.Width = 150;
             // 
             // frmQuanLy
             // 

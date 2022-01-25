@@ -40,15 +40,8 @@ namespace QuanLiBanHang.BUS
                 {
                     throw new Exception("Mã sinh viên hoặc mật khẩu không chính xác.");
                 }
-                //else if (taiKhoan.trang_thai == true)
-                //{
-                //    taiKhoanDAL = new TaiKhoanDAL();
-                //    throw new Exception("Tài khoản đã có người đăng nhập.");
-                //}
                 else
                 {
-                    //taiKhoan.trang_thai = true;
-                    //taiKhoanDAL.Update(taiKhoan);
                     NhanVien nhanVien = nhanVienBUS.GetNhanVienByMaNV(taiKhoan.ma_nv);
                     return nhanVien.ma_cv;
                 }
@@ -58,12 +51,5 @@ namespace QuanLiBanHang.BUS
                 throw ex;
             }
         }
-
-        //public void DangXuat(string maNV)
-        //{
-        //    TaiKhoan taiKhoan = taiKhoanDAL.GetTaiKhoan(maNV);
-        //taiKhoan.trang_thai = false;
-        //taiKhoanDAL.Update(taiKhoan);
-        //}
     }
 }

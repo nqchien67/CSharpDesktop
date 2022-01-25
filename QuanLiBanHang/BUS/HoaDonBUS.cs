@@ -45,5 +45,10 @@ namespace QuanLiBanHang.BUS
         {
             DAL.Delete(GetHoaDons().Find(p => p.ma_hd == maHD));
         }
+
+        public int GetMaHD()
+        {
+            return DAL.GetMaHD();
+        }
     }
 }

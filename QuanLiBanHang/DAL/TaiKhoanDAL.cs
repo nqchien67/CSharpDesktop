@@ -32,15 +32,15 @@ namespace QuanLiBanHang.DAL
             }
         }
 
-        //public void Update(TaiKhoan taiKhoan)
-        //{
-        //    taiKhoan.trang_thai = taiKhoan.trang_thai;
-        //    db.SaveChanges();
-        //}
+        public void Delete(TaiKhoan taiKhoan)
+        {
+            db.TaiKhoans.Remove(taiKhoan);
+            db.SaveChanges();
+        }
 
         public TaiKhoan GetTaiKhoan(string maNV)
         {
-            return db.TaiKhoans.Where(p => p.ma_nv == maNV).SingleOrDefault(); 
+            return db.TaiKhoans.Where(p => p.ma_nv == maNV).SingleOrDefault();
         }
     }
 }

@@ -39,5 +39,17 @@ namespace QuanLiBanHang.DAL
             db.HoaDons.Remove(hoaDon);
             db.SaveChanges();
         }
+
+        public int GetMaHD()
+        {
+            List<HoaDon> ls = GetHoaDons();
+            int maHD = ls[0].ma_hd;
+            foreach(var n in ls)
+            {
+                if (n.ma_hd > maHD)
+                    maHD = n.ma_hd;
+            }
+            return maHD;
+        }
     }
 }
